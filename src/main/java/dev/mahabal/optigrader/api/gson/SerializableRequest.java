@@ -1,4 +1,4 @@
-package org.mahabal.optigrader.api.gson;
+package dev.mahabal.optigrader.api.gson;
 
 /**
  * @author Matthew

@@ -1,11 +1,11 @@
-package org.mahabal.optigrader.api.handler;
+package dev.mahabal.optigrader.api.handler;
 
 import com.google.gson.JsonElement;
+import dev.mahabal.optigrader.api.model.Session;
 import org.jdbi.v3.core.Jdbi;
-import org.mahabal.optigrader.api.dao.SessionDao;
-import org.mahabal.optigrader.api.dao.UserDao;
-import org.mahabal.optigrader.api.gson.LoginRequest;
-import org.mahabal.optigrader.api.model.Session;
+import dev.mahabal.optigrader.api.dao.SessionDao;
+import dev.mahabal.optigrader.api.dao.UserDao;
+import dev.mahabal.optigrader.api.gson.LoginRequest;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

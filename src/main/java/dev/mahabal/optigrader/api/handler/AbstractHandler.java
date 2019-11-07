@@ -1,16 +1,14 @@
-package org.mahabal.optigrader.api.handler;
+package dev.mahabal.optigrader.api.handler;
 
 import com.google.common.io.CharStreams;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import org.apache.logging.log4j.Level;
+import dev.mahabal.optigrader.api.model.Session;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.core.config.Configurator;
 import org.jdbi.v3.core.Jdbi;
-import org.mahabal.optigrader.api.model.Session;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;

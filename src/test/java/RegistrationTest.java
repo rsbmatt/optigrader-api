@@ -7,7 +7,7 @@ import org.apache.commons.validator.routines.EmailValidator;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.junit.jupiter.api.*;
-import org.mahabal.optigrader.api.handler.RegistrationHandler;
+import dev.mahabal.optigrader.api.handler.RegistrationHandler;
 
 import java.io.IOException;
 import java.nio.file.Files;

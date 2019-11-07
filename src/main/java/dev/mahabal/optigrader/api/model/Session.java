@@ -1,4 +1,4 @@
-package org.mahabal.optigrader.api.model;
+package dev.mahabal.optigrader.api.model;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

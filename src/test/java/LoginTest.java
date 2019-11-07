@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
-import org.mahabal.optigrader.api.dao.SessionDao;
+import dev.mahabal.optigrader.api.dao.SessionDao;
 
 import java.io.IOException;
 import java.util.Collections;

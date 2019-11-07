@@ -1,16 +1,16 @@
-package org.mahabal.optigrader.api.dao;
+package dev.mahabal.optigrader.api.dao;
 
 import com.google.common.base.Charsets;
 import com.google.common.hash.HashFunction;
 import com.google.common.hash.Hashing;
+import dev.mahabal.optigrader.api.model.Session;
+import dev.mahabal.optigrader.api.model.User;
 import org.jdbi.v3.sqlobject.config.RegisterBeanMapper;
 import org.jdbi.v3.sqlobject.customizer.Bind;
 import org.jdbi.v3.sqlobject.customizer.BindFields;
 import org.jdbi.v3.sqlobject.statement.SqlQuery;
 import org.jdbi.v3.sqlobject.statement.SqlUpdate;
 import org.jdbi.v3.stringtemplate4.UseStringTemplateSqlLocator;
-import org.mahabal.optigrader.api.model.Session;
-import org.mahabal.optigrader.api.model.User;
 
 import java.util.List;
 import java.util.Optional;
