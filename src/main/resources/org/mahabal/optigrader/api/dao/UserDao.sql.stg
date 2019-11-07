@@ -1,0 +1,70 @@
+createTable () ::= <<
+CREATE TABLE IF NOT EXISTS users
+(
+  nid VARCHAR(8) NOT NULL,
+  login VARCHAR(254) NULL,
+  password CHAR(64) NULL,
+  firstName VARCHAR(50) NULL,
+  lastName VARCHAR(50) NULL,
+  user_mode BIT(1) NOT NULL,
+  dateCreated DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  lastLoggedIn DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (nid)
+);
+>>
+
+dropTable() ::= <<
+  DROP TABLE IF EXISTS users;
+>>
+
+getUserByEmail() ::= <<
+SELECT * FROM users WHERE login = :email
+>>
+
+getUserByNid() ::= <<
+SELECT * FROM users WHERE nid = :nid
+>>
+
+addUser() ::= <<
+  INSERT INTO users (nid, user_mode, firstName, lastName, login, password)
+  VALUES (:nid, :user_mode, :firstName, :lastName, :login, :password)
+>>
+
+nidForEmail() ::= <<
+  SELECT nid from users WHERE login = :email
+>>
+
+validateEmailLogin() ::= <<
+  SELECT * FROM users
+  WHERE login = ? AND password = ?
+>>
+
+validateNidLogin() ::= <<
+  SELECT * FROM users
+  WHERE nid = ? AND password = ?
+>>
+
+loggedIn() ::= <<
+  UPDATE users SET lastLoggedIn = CURRENT_TIMESTAMP
+  WHERE nid = :nid
+>>
+
+totalCount() ::= <<
+  SELECT count(1) FROM users
+>>
+
+studentCount() ::= <<
+  SELECT count(1) FROM users WHERE user_mode = 0;
+>>
+
+teacherCount() ::= <<
+  SELECT count(1) FROM users WHERE user_mode = 1;
+>>
+
+dailyActiveUsers() ::= <<
+  SELECT count(1) FROM sessions WHERE lastLoggedIn >= NOW() - INTERVAL 1 DAY
+>>
+
+allUsers() ::= <<
+  SELECT * FROM users;
+>>

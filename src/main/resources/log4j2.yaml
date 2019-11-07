@@ -1,0 +1,13 @@
+Configuration:
+  status: debug
+  Appenders:
+    Console:
+      name: Console
+      target: SYSTEM_OUT
+      PatternLayout:
+        Pattern: "[%d{yyyy-MM-dd hh:mm:ss}] %-5p - (%F:%L) - %m%n"
+  Loggers:
+    Root:
+      level: error
+      AppenderRef:
+        ref: Console

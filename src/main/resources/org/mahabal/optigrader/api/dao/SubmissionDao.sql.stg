@@ -1,0 +1,32 @@
+createTable () ::= <<
+CREATE TABLE IF NOT EXISTS history
+ (
+    id               INT unsigned NOT NULL AUTO_INCREMENT,
+    nid              VARCHAR(8)   NOT NULL,
+    testCode         VARCHAR(4)  NOT NULL,
+    studentSolutions VARCHAR(500) NOT NULL,
+    studentScore     INT NULL,
+    submittedImage   BLOB NULL,
+    submissionTime   DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (id),
+    FOREIGN KEY (nid) REFERENCES users (nid) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (testCode) REFERENCES tests (code) ON DELETE CASCADE ON UPDATE CASCADE
+  );
+>>
+
+dropTable() ::= <<
+  DROP TABLE IF EXISTS history;
+>>
+
+addSubmission() ::= <<
+  INSERT INTO history (nid, testCode, studentSolutions, studentScore)
+  VALUES (:nid, :testCode, :studentSolutions, :studentScore)
+>>
+
+getSubmissionsForTestCode() ::= <<
+  SELECT * FROM history WHERE testCode = :testCode
+>>
+
+getSubmissionsForNid() ::= <<
+  SELECT * FROM history WHERE nid = :nid
+>>

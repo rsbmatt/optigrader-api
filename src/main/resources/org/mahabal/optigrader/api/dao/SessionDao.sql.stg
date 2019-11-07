@@ -1,0 +1,43 @@
+createTable () ::= <<
+  CREATE TABLE IF NOT EXISTS sessions
+  (
+    nid   VARCHAR(8)  NOT NULL,
+    ip    VARCHAR(45) NOT NULL,
+    token CHAR(64)    NOT NULL,
+    dateCreated DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (nid),
+    FOREIGN KEY (nid) REFERENCES users (nid) ON DELETE CASCADE ON UPDATE CASCADE
+  )
+>>
+
+dropTable() ::= <<
+  DROP TABLE IF EXISTS sessions;
+>>
+
+getSessionByNid() ::= <<
+SELECT *
+FROM sessions
+WHERE nid = :nid AND ip = :ip
+>>
+
+getSessionByToken() ::= <<
+SELECT *
+FROM sessions
+WHERE token = :token AND ip = :ip
+>>
+
+validateSession() ::= <<
+SELECT *
+FROM sessions
+WHERE token = :token AND ip = :ip
+>>
+
+getAllNids() ::= <<
+  SELECT nid FROM sessions WHERE 1;
+>>
+
+insertSession() ::= <<
+  INSERT INTO sessions (nid, ip, token) VALUES (:nid, :ip, :token)
+  ON DUPLICATE KEY UPDATE ip = :ip, token = :token, dateCreated = CURRENT_TIMESTAMP
+>>
+

@@ -1,0 +1,42 @@
+image: openjdk:11.0.1-jdk-oraclelinux7
+
+services:
+  - mariadb:latest
+  
+variables:
+  MYSQL_ROOT_PASSWORD: notgonnahappen!
+  MYSQL_DATABASE: optigrader
+
+stages:
+  - build
+  - test
+
+before_script:
+  - export GRADLE_USER_HOME=`pwd`/.gradle
+
+cache:
+  paths:
+    - .gradle/wrapper
+    - .gradle/caches
+
+build:
+  stage: build
+  script:
+    - ./gradlew assemble
+    - ./gradlew jar
+  artifacts:
+    paths:
+      - api/build/libs/api.jar
+    expire_in: 1 day
+  only:
+    - master
+
+test:
+  stage: test
+  script:
+    - java -jar api/build/libs/api.jar test &
+    - ./gradlew check
+
+
+after_script:
+  - echo "End CI"

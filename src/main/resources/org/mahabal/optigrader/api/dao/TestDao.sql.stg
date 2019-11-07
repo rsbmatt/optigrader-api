@@ -1,0 +1,34 @@
+createTable () ::= <<
+CREATE TABLE IF NOT EXISTS tests
+(
+  code              CHAR(4)      NOT NULL,
+  testName          VARCHAR(50)  NOT NULL,
+  numberOfQuestions INT          NOT NULL,
+  solutions         VARCHAR(500) NOT NULL,
+  testOwner         VARCHAR(8)   NOT NULL,
+  expiration        DATETIME     NOT NULL,
+  PRIMARY KEY (code),
+  FOREIGN KEY (testOwner) REFERENCES users (nid) ON DELETE CASCADE ON UPDATE CASCADE
+);
+>>
+
+dropTable() ::= <<
+  DROP TABLE IF EXISTS tests;
+>>
+
+addTest() ::= <<
+  INSERT INTO tests (testName, code, numberOfQuestions, solutions, testOwner, expiration)
+  VALUES (:testName, :code, :numberOfQuestions, :solutions, :testOwner, :expiration)
+>>
+
+getTestsOwnedByNid() ::= <<
+  SELECT * FROM tests WHERE testOwner = :nid
+>>
+
+getTestByCode() ::= <<
+  SELECT * FROM tests WHERE code = :code
+>>
+
+deleteTestByCode() ::= <<
+    DELETE FROM tests WHERE code = :code
+>>
