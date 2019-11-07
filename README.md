@@ -1,6 +1,6 @@
 # optigrader-api
 
-OptiGrader uses a RESTful web service for it's API. The underlying system is Java and it uses JSON for transferring
+OptiGrader uses a RESTful web service for its API. The underlying system is Java and it uses JSON for transferring
 payloads.
 
 ## Under the Hood
@@ -30,8 +30,6 @@ payloads.
 - All sensitive data such as IP addresses and passwords are hashed and salted before
 storage
 - All input is sanitized using proven methods to guard against SQLi attacks
-
-
 
 ## Built With
 - [JDBI 3](https://github.com/jdbi/jdbi) - Provides fluent, convenient, idiomatic access to relational data in Java
