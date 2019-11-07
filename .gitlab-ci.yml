@@ -27,7 +27,7 @@ build:
     - ./gradlew jar
   artifacts:
     paths:
-      - api/build/libs/api.jar
+      - build/libs/api.jar
     expire_in: 1 day
   only:
     - master
