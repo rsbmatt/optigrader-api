@@ -49,7 +49,7 @@ test {
     useJUnitPlatform()
 }
 
-mainClassName = 'org.mahabal.optigrader.api.ApiServer'
+mainClassName = 'dev.mahabal.optigrader.api.ApiServer'
 
 jar {
     manifest {
