@@ -27,7 +27,7 @@ build:
     - ./gradlew jar
   artifacts:
     paths:
-      - build/libs/api.jar
+      - build/libs/optigrader-api.jar
     expire_in: 1 day
   only:
     - master
@@ -35,7 +35,7 @@ build:
 test:
   stage: test
   script:
-    - java -jar api/build/libs/api.jar test &
+    - java -jar build/libs/optigrader-api.jar test &
     - ./gradlew check
 
 
