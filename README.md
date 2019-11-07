@@ -40,6 +40,24 @@ storage
 - [Gson](https://github.com/google/gson) - Google's open source library for easy (de)?serialization of payloads
 - [Lombok](https://github.com/rzwitserloot/lombok) - Very spicy additions to Java (via annotation processing
 
+## Unit Testing via GitLab CI
+
+The testing process is comprised of the following:
+
+- Compiling the API
+- Creating a fresh MariaDB database within the openjdk image
+- Executing the API to listen for connections on http://localhost:8080
+- Going through the normal unit tests
+  - [Registration Test](src/test/java/RegistrationTest.java)
+    - Test random username generation
+    - Test random email generation
+    - Test successful registrations (random information)
+    - Test unsuccessful registrations (random information)
+  - [Login Test](src/test/java/LoginTest.java)
+    - Test hashing of the default password locally (ensures it matches server)
+    - Test logins to active sessions (using the successful registrations from the Registration Test)
+    - Test incorrect logins to active sessions
+
 ## Authors 
 
 - **Matthew Balwant** - [GitLab](https://mahabal.dev/explore/projects) | [GitHub](https://github.com/rsbmatt)
